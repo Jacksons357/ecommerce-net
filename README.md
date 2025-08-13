@@ -2,6 +2,17 @@
 
 Sistema completo de e-commerce com backend em .NET 6 e frontend em Angular 18, seguindo boas práticas de arquitetura e testes.
 
+## 📹 Demonstração em Vídeo
+
+### Visualização do Sistema
+Assista à demonstração completa do sistema e-commerce:
+
+[![Demonstração do Sistema E-commerce](https://img.youtube.com/vi/bYwI7J5qpjM/0.jpg)](https://www.youtube.com/watch?v=bYwI7J5qpjM)
+
+**🎬 [Clique aqui para assistir no YouTube](https://www.youtube.com/watch?v=bYwI7J5qpjM)**
+
+---
+
 ## 📋 Requisitos do Sistema
 
 ### Backend
