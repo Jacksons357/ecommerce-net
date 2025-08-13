@@ -1,0 +1,15 @@
+C:\Users\jacks\OneDrive\Área de Trabalho\projects\grupo-gps\ecommerce-api\src\Ecommerce.Application\obj\Debug\net6.0\Ecommerce.Application.csproj.AssemblyReference.cache
+C:\Users\jacks\OneDrive\Área de Trabalho\projects\grupo-gps\ecommerce-api\src\Ecommerce.Application\obj\Debug\net6.0\Ecommerce.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jacks\OneDrive\Área de Trabalho\projects\grupo-gps\ecommerce-api\src\Ecommerce.Application\obj\Debug\net6.0\Ecommerce.Application.AssemblyInfoInputs.cache
+C:\Users\jacks\OneDrive\Área de Trabalho\projects\grupo-gps\ecommerce-api\src\Ecommerce.Application\obj\Debug\net6.0\Ecommerce.Application.AssemblyInfo.cs
+C:\Users\jacks\OneDrive\Área de Trabalho\projects\grupo-gps\ecommerce-api\src\Ecommerce.Application\obj\Debug\net6.0\Ecommerce.Application.csproj.CoreCompileInputs.cache
+C:\Users\jacks\OneDrive\Área de Trabalho\projects\grupo-gps\ecommerce-api\src\Ecommerce.Application\bin\Debug\net6.0\Ecommerce.Application.deps.json
+C:\Users\jacks\OneDrive\Área de Trabalho\projects\grupo-gps\ecommerce-api\src\Ecommerce.Application\bin\Debug\net6.0\Ecommerce.Application.dll
+C:\Users\jacks\OneDrive\Área de Trabalho\projects\grupo-gps\ecommerce-api\src\Ecommerce.Application\bin\Debug\net6.0\Ecommerce.Application.pdb
+C:\Users\jacks\OneDrive\Área de Trabalho\projects\grupo-gps\ecommerce-api\src\Ecommerce.Application\bin\Debug\net6.0\Ecommerce.Domain.dll
+C:\Users\jacks\OneDrive\Área de Trabalho\projects\grupo-gps\ecommerce-api\src\Ecommerce.Application\bin\Debug\net6.0\Ecommerce.Domain.pdb
+C:\Users\jacks\OneDrive\Área de Trabalho\projects\grupo-gps\ecommerce-api\src\Ecommerce.Application\obj\Debug\net6.0\Ecommerce.Application.csproj.CopyComplete
+C:\Users\jacks\OneDrive\Área de Trabalho\projects\grupo-gps\ecommerce-api\src\Ecommerce.Application\obj\Debug\net6.0\Ecommerce.Application.dll
+C:\Users\jacks\OneDrive\Área de Trabalho\projects\grupo-gps\ecommerce-api\src\Ecommerce.Application\obj\Debug\net6.0\refint\Ecommerce.Application.dll
+C:\Users\jacks\OneDrive\Área de Trabalho\projects\grupo-gps\ecommerce-api\src\Ecommerce.Application\obj\Debug\net6.0\Ecommerce.Application.pdb
+C:\Users\jacks\OneDrive\Área de Trabalho\projects\grupo-gps\ecommerce-api\src\Ecommerce.Application\obj\Debug\net6.0\ref\Ecommerce.Application.dll

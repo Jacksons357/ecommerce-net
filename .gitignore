@@ -1,0 +1,53 @@
+##############################
+# Backend .NET 6 (ecommerce-api)
+##############################
+
+# Build
+/ecommerce-api/bin/
+/ecommerce-api/obj/
+
+# Visual Studio
+/ecommerce-api/.vs/
+/ecommerce-api/*.user
+/ecommerce-api/*.suo
+
+# Logs
+/ecommerce-api/*.log
+
+# Local settings
+/ecommerce-api/appsettings.Development.json
+
+# NuGet
+/ecommerce-api/*.nupkg
+/ecommerce-api/packages/
+
+##############################
+# Frontend Angular (ecommerce-front)
+##############################
+
+# Dependencies
+/ecommerce-front/node_modules/
+
+# Build output
+/ecommerce-front/dist/
+/ecommerce-front/.angular/
+
+# Logs
+/ecommerce-front/npm-debug.log
+/ecommerce-front/yarn-error.log
+/ecommerce-front/*.log
+
+##############################
+# Common OS / Editor files
+##############################
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# VSCode
+.vscode/

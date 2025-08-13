@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "dgSpecHash": "DdnoYWjeMGpU+E7S7g/Z1hz2/W+ZlaHraZ28E+GvGUb3P9I924eVvKbaNR/rAKt/Qh1mZJzvp7Nn/+A4Dq746w==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\jacks\\OneDrive\\Área de Trabalho\\projects\\grupo-gps\\ecommerce-api\\src\\Ecommerce.Application\\Ecommerce.Application.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\jacks\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
+    "C:\\Users\\jacks\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\8.0.0\\microsoft.bcl.asyncinterfaces.8.0.0.nupkg.sha512",
+    "C:\\Users\\jacks\\.nuget\\packages\\microsoft.bcl.timeprovider\\8.0.1\\microsoft.bcl.timeprovider.8.0.1.nupkg.sha512",
+    "C:\\Users\\jacks\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.0\\microsoft.extensions.logging.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\jacks\\.nuget\\packages\\microsoft.identity.abstractions\\9.3.0\\microsoft.identity.abstractions.9.3.0.nupkg.sha512",
+    "C:\\Users\\jacks\\.nuget\\packages\\microsoft.identitymodel.abstractions\\8.13.1\\microsoft.identitymodel.abstractions.8.13.1.nupkg.sha512",
+    "C:\\Users\\jacks\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\8.13.1\\microsoft.identitymodel.jsonwebtokens.8.13.1.nupkg.sha512",
+    "C:\\Users\\jacks\\.nuget\\packages\\microsoft.identitymodel.logging\\8.13.1\\microsoft.identitymodel.logging.8.13.1.nupkg.sha512",
+    "C:\\Users\\jacks\\.nuget\\packages\\microsoft.identitymodel.tokens\\8.13.1\\microsoft.identitymodel.tokens.8.13.1.nupkg.sha512",
+    "C:\\Users\\jacks\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\jacks\\.nuget\\packages\\system.identitymodel.tokens.jwt\\8.13.1\\system.identitymodel.tokens.jwt.8.13.1.nupkg.sha512"
+  ],
+  "logs": []
+}
