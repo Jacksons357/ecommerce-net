@@ -1,0 +1,22 @@
+<div class="layout-container">
+  <nav class="navbar">
+    <div class="nav-brand">
+      <h3>E-commerce</h3>
+    </div>
+    
+    <div class="nav-links">
+      <a routerLink="/clientes" routerLinkActive="active">Clientes</a>
+      <a routerLink="/produtos" routerLinkActive="active">Produtos</a>
+      <a routerLink="/pedidos" routerLinkActive="active">Pedidos</a>
+    </div>
+    
+    <div class="nav-user" *ngIf="currentUser">
+      <span class="user-name">{{ currentUser.nome }}</span>
+      <button class="btn btn-outline" (click)="logout()">Sair</button>
+    </div>
+  </nav>
+  
+  <main class="main-content">
+    <router-outlet></router-outlet>
+  </main>
+</div>

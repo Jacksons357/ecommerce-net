@@ -1,0 +1,116 @@
+<div class="novo-pedido-container">
+  <div class="header">
+    <h2>Novo Pedido</h2>
+    <a routerLink="/pedidos" class="btn btn-secondary">
+      ← Voltar para Lista
+    </a>
+  </div>
+
+  <div *ngIf="error" class="error-message">
+    {{ error }}
+    <button (click)="error = null" class="btn-close">×</button>
+  </div>
+
+  <form [formGroup]="pedidoForm" (ngSubmit)="salvarPedido()">
+    <div class="form-section">
+      <h3>Informações do Cliente</h3>
+      <div class="form-group">
+        <label for="clienteId">Cliente:</label>
+        <select id="clienteId" formControlName="clienteId" [disabled]="loading" (change)="onClienteChange($event)">
+          <option value="">{{ loading ? 'Carregando clientes...' : (clientes.length > 0 ? 'Selecione um cliente' : 'Nenhum cliente disponível') }}</option>
+          <option *ngFor="let cliente of clientes; trackBy: trackByClienteId" [value]="cliente.id">
+            {{ cliente.nome }} - {{ cliente.cpf }}
+          </option>
+        </select>
+        
+        <div *ngIf="clientes.length === 0 && !loading" class="info-message">
+          <small>Nenhum cliente encontrado. <a routerLink="/clientes">Cadastre um cliente primeiro</a>.</small>
+        </div>
+        <div *ngIf="pedidoForm.get('clienteId')?.invalid && pedidoForm.get('clienteId')?.touched" class="field-error">
+          Cliente é obrigatório
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="section-header">
+        <h3>Itens do Pedido</h3>
+        <button type="button" (click)="adicionarItem()" class="btn btn-success">
+          + Adicionar Item
+        </button>
+      </div>
+
+      <div *ngIf="itens.length === 0" class="empty-items">
+        <p>Nenhum item adicionado. Clique em "Adicionar Item" para começar.</p>
+      </div>
+
+      <div formArrayName="itens">
+        <div *ngFor="let item of itens.controls; let i = index" class="item-row" [formGroupName]="i">
+        <div class="item-fields">
+          <div class="form-group">
+            <label>Produto:</label>
+            <select formControlName="produtoId" (change)="onProdutoChange($event, i)" [disabled]="loading">
+              <option value="">{{ loading ? 'Carregando produtos...' : (produtos.length > 0 ? 'Selecione um produto' : 'Nenhum produto disponível') }}</option>
+              <option *ngFor="let produto of produtos; trackBy: trackByProdutoId; let idx = index" [value]="produto.id">
+                {{ produto.nome }} - {{ produto.preco | currency:'BRL':'symbol':'1.2-2' }}
+              </option>
+            </select>
+            
+            
+            <div *ngIf="produtos.length === 0 && !loading" class="info-message">
+              <small>Nenhum produto encontrado. <a routerLink="/produtos">Cadastre um produto primeiro</a>.</small>
+            </div>
+            
+            <div *ngIf="item && item.get('produtoId')?.invalid && item.get('produtoId')?.touched" class="field-error">
+              Produto é obrigatório
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Quantidade:</label>
+            <input type="number" formControlName="quantidade" min="1" (input)="onQuantidadeChange(i)" (change)="onQuantidadeChange(i)" />
+            <div *ngIf="item && item.get('quantidade')?.invalid && item.get('quantidade')?.touched" class="field-error">
+              Quantidade deve ser maior que zero
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Preço Unitário:</label>
+            <div class="price-display">
+              {{ item ? (getProdutoPreco(item.get('produtoId')?.value) | currency:'BRL':'symbol':'1.2-2') : 'R$ 0,00' }}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Subtotal:</label>
+            <div class="subtotal-display">
+              {{ getSubtotal(i) | currency:'BRL':'symbol':'1.2-2' }}
+            </div>
+          </div>
+
+          <div class="item-actions">
+            <button type="button" (click)="removerItem(i)" class="btn btn-danger btn-sm" *ngIf="itens.length > 1">
+              🗑️
+            </button>
+          </div>
+        </div>
+        </div>
+      </div>
+
+      <div *ngIf="itens.length > 0" class="total-section">
+        <div class="total-display">
+          <strong>Total Geral: {{ getTotal() | currency:'BRL':'symbol':'1.2-2' }}</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" [disabled]="pedidoForm.invalid || loading || itens.length === 0" class="btn btn-primary">
+        {{ loading ? 'Criando...' : 'Criar Pedido' }}
+      </button>
+      <a routerLink="/pedidos" class="btn btn-secondary">
+        Cancelar
+      </a>
+    </div>
+  </form>
+</div>

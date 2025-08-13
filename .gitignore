@@ -32,42 +32,46 @@ Coverage*/
 ##############################
 
 # Dependências
-/ecommerce-front/node_modules/
+ecommerce-front/node_modules/
 
 # Build output
-/ecommerce-front/dist/
-/ecommerce-front/tmp/
-/ecommerce-front/out-tsc/
-/ecommerce-front/bazel-out/
-/ecommerce-front/.angular/
-/ecommerce-front/.angular/cache
+ecommerce-front/dist/
+ecommerce-front/tmp/
+ecommerce-front/out-tsc/
+ecommerce-front/bazel-out/
+ecommerce-front/.angular/
 
 # Logs
-/ecommerce-front/npm-debug.log
-/ecommerce-front/yarn-error.log
-/ecommerce-front/*.log
-/ecommerce-front/libpeerconnection.log
-/ecommerce-front/testem.log
+ecommerce-front/npm-debug.log
+ecommerce-front/yarn-error.log
+ecommerce-front/*.log
+ecommerce-front/libpeerconnection.log
+ecommerce-front/testem.log
 
 # Coverage
-/ecommerce-front/coverage
+ecommerce-front/coverage/
 
 # Typings
-/ecommerce-front/typings
+ecommerce-front/typings/
 
 # IDEs and editors
-/ecommerce-front/.idea/
-/ecommerce-front/.project
-/ecommerce-front/.classpath
-/ecommerce-front/.c9/
-/ecommerce-front/*.launch
-/ecommerce-front/.settings/
-/ecommerce-front/*.sublime-workspace
-/ecommerce-front/.history/
+ecommerce-front/.idea/
+ecommerce-front/.project
+ecommerce-front/.classpath
+ecommerce-front/.c9/
+ecommerce-front/*.launch
+ecommerce-front/.settings/
+ecommerce-front/*.sublime-workspace
+ecommerce-front/.history/
 
 # Miscellaneous
-/ecommerce-front/.sass-cache/
-/ecommerce-front/connect.lock
+ecommerce-front/.sass-cache/
+ecommerce-front/connect.lock
+
+# Environment files
+ecommerce-front/.env
+ecommerce-front/.env.local
+ecommerce-front/.env.*.local
 
 ##############################
 # Comuns para qualquer pasta

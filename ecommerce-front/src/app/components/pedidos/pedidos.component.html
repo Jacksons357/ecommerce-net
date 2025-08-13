@@ -1,0 +1,71 @@
+<div class="pedidos-container">
+  <div class="header">
+    <h2>Gestão de Pedidos</h2>
+    <a routerLink="/pedidos/novo" class="btn btn-primary">
+      + Novo Pedido
+    </a>
+  </div>
+
+  <div class="filters">
+    <div class="filter-group">
+      <label for="status">Filtrar por Status:</label>
+      <select id="status" [(ngModel)]="filtroStatus" (change)="onFiltroChange()">
+        <option value="">Todos</option>
+        <option [value]="StatusPedido.Criado">Criado</option>
+        <option [value]="StatusPedido.Pago">Pago</option>
+        <option [value]="StatusPedido.Cancelado">Cancelado</option>
+      </select>
+    </div>
+  </div>
+
+  <div *ngIf="error" class="error-message">
+    {{ error }}
+    <button (click)="error = null" class="btn-close">×</button>
+  </div>
+
+  <div class="table-container">
+    <div *ngIf="loading" class="loading">
+      Carregando pedidos...
+    </div>
+
+    <table *ngIf="!loading" class="pedidos-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Cliente</th>
+          <th>Data</th>
+          <th>Status</th>
+          <th>Total</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pedido of pedidos">
+          <td>{{ pedido.id | slice:0:8 }}...</td>
+          <td>{{ pedido.clienteNome }}</td>
+          <td>{{ pedido.dataPedido | date:'dd/MM/yyyy HH:mm' }}</td>
+          <td>
+            <span class="badge" [ngClass]="getStatusBadgeClass(pedido.status)">
+              {{ getStatusText(pedido.status) }}
+            </span>
+          </td>
+          <td>{{ pedido.total | currency:'BRL':'symbol':'1.2-2' }}</td>
+          <td>
+            <div class="actions">
+              <a [routerLink]="['/pedidos', pedido.id]" class="btn btn-sm btn-primary">
+                👁️ Ver Detalhes
+              </a>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div *ngIf="!loading && pedidos.length === 0" class="empty-state">
+      <p>{{ filtroStatus !== '' ? 'Nenhum pedido encontrado com esse status.' : 'Nenhum pedido cadastrado.' }}</p>
+      <a *ngIf="filtroStatus === ''" routerLink="/pedidos/novo" class="btn btn-primary">
+        Criar primeiro pedido
+      </a>
+    </div>
+  </div>
+</div>

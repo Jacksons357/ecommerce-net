@@ -1,0 +1,123 @@
+<div class="pedido-detalhe-container">
+  <div class="header">
+    <h2>Detalhes do Pedido</h2>
+    <button routerLink="/pedidos" class="btn btn-secondary">
+      ← Voltar para Lista
+    </button>
+  </div>
+
+  <div *ngIf="loading" class="loading">
+    Carregando...
+  </div>
+
+  <div *ngIf="error" class="error-message">
+    {{ error }}
+  </div>
+
+  <div *ngIf="pedido && !loading" class="pedido-info">
+    <div class="info-card">
+      <h3>Informações Gerais</h3>
+      <div class="info-grid">
+        <div class="info-item">
+          <label>ID:</label>
+          <span>{{ pedido.id }}</span>
+        </div>
+        <div class="info-item">
+          <label>Data:</label>
+          <span>{{ pedido.dataPedido | date:'dd/MM/yyyy HH:mm' }}</span>
+        </div>
+        <div class="info-item">
+          <label>Status:</label>
+          <span class="badge" [ngClass]="getStatusBadgeClass(pedido.status)">
+            {{ getStatusText(pedido.status) }}
+          </span>
+        </div>
+        <div class="info-item">
+          <label>Total:</label>
+          <span class="total">{{ pedido.total | currency:'BRL':'symbol':'1.2-2' }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <h3>Cliente</h3>
+      <div class="info-grid">
+        <div class="info-item">
+          <label>Nome:</label>
+          <span>{{ pedido.cliente.nome }}</span>
+        </div>
+        <div class="info-item">
+          <label>CPF:</label>
+          <span>{{ pedido.cliente.cpf }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <h3>Itens do Pedido</h3>
+      <div class="table-container">
+        <table class="pedido-table">
+          <thead>
+            <tr>
+              <th>Produto</th>
+              <th>Quantidade</th>
+              <th>Preço Unitário</th>
+              <th>Subtotal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of pedido.itens">
+              <td>{{ item.produtoNome }}</td>
+              <td>{{ item.quantidade }}</td>
+              <td>{{ item.precoUnitario | currency:'BRL':'symbol':'1.2-2' }}</td>
+              <td>{{ item.subtotal | currency:'BRL':'symbol':'1.2-2' }}</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr class="total-row">
+              <td colspan="3"><strong>Total Geral:</strong></td>
+              <td><strong>{{ pedido.total | currency:'BRL':'symbol':'1.2-2' }}</strong></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+
+    <div class="actions" *ngIf="pedido.status === StatusPedido.Criado">
+      <button (click)="pagar()" class="btn btn-success">
+        💳 Pagar Pedido
+      </button>
+      <button (click)="cancelar()" class="btn btn-danger">
+        ❌ Cancelar Pedido
+      </button>
+    </div>
+
+    <div class="info-card" *ngIf="historico.length > 0">
+      <h3>Histórico de Alterações</h3>
+      <div class="historico-list">
+        <div *ngFor="let evento of historico" class="historico-item">
+          <div class="historico-header">
+            <strong>{{ evento.acao }}</strong>
+            <span class="historico-date">{{ evento.dataOcorrencia | date:'dd/MM/yyyy HH:mm' }}</span>
+          </div>
+          <div class="historico-user">Por: {{ evento.usuario }}</div>
+          <div *ngIf="evento.dadosAntes" class="historico-dados">
+            <details>
+              <summary>Ver detalhes</summary>
+              <div class="dados-diff">
+                <div *ngIf="evento.dadosAntes">
+                  <strong>Antes:</strong>
+                  <pre>{{ evento.dadosAntes }}</pre>
+                </div>
+                <div *ngIf="evento.dadosDepois">
+                  <strong>Depois:</strong>
+                  <pre>{{ evento.dadosDepois }}</pre>
+                </div>
+              </div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

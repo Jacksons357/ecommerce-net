@@ -1,0 +1,52 @@
+<div class="login-container">
+  <div class="login-card">
+    <h2>E-commerce - Login</h2>
+    
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input 
+          type="email" 
+          id="email" 
+          formControlName="email" 
+          class="form-control"
+          [class.is-invalid]="email?.invalid && email?.touched">
+        <div class="invalid-feedback" *ngIf="email?.invalid && email?.touched">
+          <div *ngIf="email?.errors?.['required']">Email é obrigatório</div>
+          <div *ngIf="email?.errors?.['email']">Email deve ter um formato válido</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="senha">Senha:</label>
+        <input 
+          type="password" 
+          id="senha" 
+          formControlName="senha" 
+          class="form-control"
+          [class.is-invalid]="senha?.invalid && senha?.touched">
+        <div class="invalid-feedback" *ngIf="senha?.invalid && senha?.touched">
+          <div *ngIf="senha?.errors?.['required']">Senha é obrigatória</div>
+        </div>
+      </div>
+
+      <div class="error-message" *ngIf="error">
+        {{ error }}
+      </div>
+
+      <button 
+        type="submit" 
+        class="btn btn-primary" 
+        [disabled]="loginForm.invalid || loading">
+        <span *ngIf="loading">Entrando...</span>
+        <span *ngIf="!loading">Entrar</span>
+      </button>
+    </form>
+
+    <div class="demo-info">
+      <h4>Dados de teste:</h4>
+      <p><strong>Email:</strong> admin&#64;local</p>
+      <p><strong>Senha:</strong> Admin&#64;123</p>
+    </div>
+  </div>
+</div>

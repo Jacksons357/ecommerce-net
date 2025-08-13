@@ -1,0 +1,109 @@
+<div class="page-container">
+  <div class="page-header">
+    <h2>Gestão de Clientes</h2>
+    <button class="btn btn-primary" (click)="showCreateForm()">
+      + Novo Cliente
+    </button>
+  </div>
+
+  <!-- Formulário de Criar/Editar -->
+  <div class="form-modal" *ngIf="showForm">
+    <div class="form-card">
+      <div class="form-header">
+        <h3>{{ editingId ? 'Editar Cliente' : 'Novo Cliente' }}</h3>
+        <button class="btn-close" (click)="cancelForm()">&times;</button>
+      </div>
+
+      <form [formGroup]="clienteForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="nome">Nome:</label>
+          <input 
+            type="text" 
+            id="nome" 
+            formControlName="nome" 
+            class="form-control"
+            [class.is-invalid]="nome?.invalid && nome?.touched">
+          <div class="invalid-feedback" *ngIf="nome?.invalid && nome?.touched">
+            <div *ngIf="nome?.errors?.['required']">Nome é obrigatório</div>
+            <div *ngIf="nome?.errors?.['minlength']">Nome deve ter pelo menos 2 caracteres</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="cpf">CPF:</label>
+          <input 
+            type="text" 
+            id="cpf" 
+            formControlName="cpf"
+            (input)="formatCpf($event)"
+            placeholder="000.000.000-00"
+            maxlength="14"
+            class="form-control"
+            [class.is-invalid]="cpf?.invalid && cpf?.touched">
+          <div class="invalid-feedback" *ngIf="cpf?.invalid && cpf?.touched">
+            <div *ngIf="cpf?.errors?.['required']">CPF é obrigatório</div>
+            <div *ngIf="cpf?.errors?.['pattern']">CPF deve ter o formato 000.000.000-00</div>
+            <div *ngIf="cpf?.errors?.['cpfInvalido']">CPF inválido</div>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn btn-secondary" (click)="cancelForm()">
+            Cancelar
+          </button>
+          <button type="submit" class="btn btn-primary" [disabled]="clienteForm.invalid">
+            {{ editingId ? 'Atualizar' : 'Criar' }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Filtro de Busca -->
+  <div class="search-container">
+    <input 
+      type="text" 
+      class="search-input" 
+      placeholder="Buscar por nome ou CPF..."
+      [(ngModel)]="searchTerm">
+  </div>
+
+  <!-- Mensagem de Erro -->
+  <div class="error-message" *ngIf="error">
+    {{ error }}
+  </div>
+
+  <!-- Lista de Clientes -->
+  <div class="table-container">
+    <div *ngIf="loading" class="loading">Carregando...</div>
+    
+    <table class="table" *ngIf="!loading">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>CPF</th>
+          <th>Data Criação</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cliente of filteredClientes">
+          <td>{{ cliente.nome }}</td>
+          <td>{{ cliente.cpf }}</td>
+          <td>{{ cliente.dataCriacao | date:'dd/MM/yyyy HH:mm' }}</td>
+          <td class="actions">
+            <button class="btn btn-sm btn-outline" (click)="editCliente(cliente)">
+              Editar
+            </button>
+            <button class="btn btn-sm btn-danger" (click)="deleteCliente(cliente.id)">
+              Excluir
+            </button>
+          </td>
+        </tr>
+        <tr *ngIf="filteredClientes.length === 0">
+          <td colspan="4" class="no-data">Nenhum cliente encontrado</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

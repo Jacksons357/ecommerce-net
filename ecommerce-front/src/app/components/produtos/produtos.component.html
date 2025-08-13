@@ -1,0 +1,108 @@
+<div class="produtos-container">
+  <div class="header">
+    <h2>Gestão de Produtos</h2>
+    <button (click)="novoProduto()" class="btn btn-primary">
+      + Novo Produto
+    </button>
+  </div>
+
+  <div class="search-bar">
+    <input
+      type="text"
+      [(ngModel)]="searchTerm"
+      placeholder="Buscar produtos..."
+      class="search-input"
+    />
+  </div>
+
+  <div *ngIf="error" class="error-message">
+    {{ error }}
+    <button (click)="error = null" class="btn-close">×</button>
+  </div>
+
+  <!-- Formulário -->
+  <div *ngIf="showForm" class="form-container">
+    <div class="form-header">
+      <h3>{{ editingProduto ? 'Editar' : 'Novo' }} Produto</h3>
+      <button (click)="cancelarForm()" class="btn-close">×</button>
+    </div>
+    
+    <form [formGroup]="produtoForm" (ngSubmit)="salvarProduto()">
+      <div class="form-group">
+        <label for="nome">Nome:</label>
+        <input
+          type="text"
+          id="nome"
+          formControlName="nome"
+          placeholder="Nome do produto"
+        />
+        <div *ngIf="produtoForm.get('nome')?.invalid && produtoForm.get('nome')?.touched" class="field-error">
+          Nome é obrigatório (mínimo 2 caracteres)
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="preco">Preço:</label>
+        <input
+          type="text"
+          id="preco"
+          formControlName="preco"
+          placeholder="R$ 0,00"
+          appCurrencyMask
+        />
+        <div *ngIf="produtoForm.get('preco')?.invalid && produtoForm.get('preco')?.touched" class="field-error">
+          Preço é obrigatório e deve ser maior que zero
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" [disabled]="produtoForm.invalid" class="btn btn-success">
+          {{ editingProduto ? 'Atualizar' : 'Criar' }}
+        </button>
+        <button type="button" (click)="cancelarForm()" class="btn btn-secondary">
+          Cancelar
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Lista de Produtos -->
+  <div class="table-container">
+    <div *ngIf="loading" class="loading">
+      Carregando produtos...
+    </div>
+
+    <table *ngIf="!loading" class="produtos-table">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Preço</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let produto of produtosFiltrados">
+          <td>{{ produto.nome }}</td>
+          <td>{{ produto.preco | currency:'BRL':'symbol':'1.2-2' }}</td>
+          <td>
+            <div class="actions">
+              <button (click)="editarProduto(produto)" class="btn btn-sm btn-primary">
+                ✏️ Editar
+              </button>
+              <button (click)="excluirProduto(produto)" class="btn btn-sm btn-danger">
+                🗑️ Excluir
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div *ngIf="!loading && produtosFiltrados.length === 0" class="empty-state">
+      <p>{{ searchTerm ? 'Nenhum produto encontrado com esse nome.' : 'Nenhum produto cadastrado.' }}</p>
+      <button *ngIf="!searchTerm" (click)="novoProduto()" class="btn btn-primary">
+        Cadastrar primeiro produto
+      </button>
+    </div>
+  </div>
+</div>
