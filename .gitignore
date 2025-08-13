@@ -2,43 +2,75 @@
 # Backend .NET 6 (ecommerce-api)
 ##############################
 
-# Build
-/ecommerce-api/bin/
-/ecommerce-api/obj/
+# Build (qualquer pasta)
+**/bin/
+**/obj/
 
 # Visual Studio
-/ecommerce-api/.vs/
-/ecommerce-api/*.user
-/ecommerce-api/*.suo
+**/.vs/
+*.user
+*.suo
 
 # Logs
-/ecommerce-api/*.log
+*.log
 
 # Local settings
-/ecommerce-api/appsettings.Development.json
+appsettings.Development.json
+appsettings.Local.json
 
 # NuGet
-/ecommerce-api/*.nupkg
-/ecommerce-api/packages/
+*.nupkg
+packages/
+
+# Coverage e resultados de testes
+*.trx
+TestResult*/
+Coverage*/
 
 ##############################
 # Frontend Angular (ecommerce-front)
 ##############################
 
-# Dependencies
+# Dependências
 /ecommerce-front/node_modules/
 
 # Build output
 /ecommerce-front/dist/
+/ecommerce-front/tmp/
+/ecommerce-front/out-tsc/
+/ecommerce-front/bazel-out/
 /ecommerce-front/.angular/
+/ecommerce-front/.angular/cache
 
 # Logs
 /ecommerce-front/npm-debug.log
 /ecommerce-front/yarn-error.log
 /ecommerce-front/*.log
+/ecommerce-front/libpeerconnection.log
+/ecommerce-front/testem.log
+
+# Coverage
+/ecommerce-front/coverage
+
+# Typings
+/ecommerce-front/typings
+
+# IDEs and editors
+/ecommerce-front/.idea/
+/ecommerce-front/.project
+/ecommerce-front/.classpath
+/ecommerce-front/.c9/
+/ecommerce-front/*.launch
+/ecommerce-front/.settings/
+/ecommerce-front/*.sublime-workspace
+/ecommerce-front/.history/
+
+# Miscellaneous
+/ecommerce-front/.sass-cache/
+/ecommerce-front/connect.lock
 
 ##############################
-# Common OS / Editor files
+# Comuns para qualquer pasta
 ##############################
 
 # macOS
@@ -50,4 +82,8 @@ ehthumbs.db
 desktop.ini
 
 # VSCode
-.vscode/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
